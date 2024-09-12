@@ -45,9 +45,10 @@ $C_adb  shell "su -c 'mv $D_tmp/assets/* ${D_DebRoot}/'"
 $C_adb shell "su -c 'chmod +x ${D_DebRoot}/{device-*,run}'"
 #解包
 $C_adb shell "su -c '${D_DebRoot}/device-unpack'"
+$C_adb shell "su -c 'mv ${D_DebRoot}/basic_setup.sh ${D_DebRoot}/debian/root/'"
 #用清华源作为apt源
 D_etcApt=${D_DebRoot}/etc/apt/
 $C_adb shell "su -c 'mv ${D_etcApt}/sources.list ${D_etcApt}/sources.list.origin; mv ${D_DebRoot}/sources.list.tsinghua ${D_etcApt}/'"
 #chroot
-chroot_cmd="[先进'adb shell',再在'adb shell'内chroot] : $C_adb shell ; su -c '${D_DebRoot}/run ${D_DebRoot}/debian'"
+chroot_cmd="[1.进'adb shell',2.在'adb shell'内 chroot, 3. 在chroot后 执行/root/basic_setup.sh] : $C_adb shell ; su -c '${D_DebRoot}/run ${D_DebRoot}/debian'"
 echo $chroot_cmd
