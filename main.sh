@@ -46,4 +46,5 @@ $C_adb shell "su -c 'chmod +x ${D_DebRoot}/{device-*,run}'"
 #解包
 $C_adb shell "su -c '${D_DebRoot}/device-unpack'"
 #chroot
-$C_adb shell "su -c '${D_DebRoot}/run ${D_DebRoot}/debian'"
+chroot_cmd="[先进'adb shell',再在'adb shell'内chroot] : $C_adb shell ; su -c '${D_DebRoot}/run ${D_DebRoot}/debian'"
+echo $chroot_cmd
