@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/system/bin/sh
 
 set -e
 
@@ -9,7 +9,7 @@ set -e
 
 spath=$( cd "$(dirname "$0")" ; pwd -P )
 
-if [ ! -f /data/eadb/deb.tar.gz ]; then
+if [ ! -f /data/eadb/deb.tar ]; then
 	echo "Debian rootfs tar doesn't existing at /data/eadb/deb.tar.gz"
 	echo "Run eadb with device connected first"
 	exit 1
@@ -23,6 +23,6 @@ fi
 
 chmod +x $spath/run*
 
-tar -xvf /data/eadb/deb.tar.gz -C /data/eadb/
+tar -xf /data/eadb/deb.tar -C /data/eadb/
 
 echo "Unpack of rootfs successful!"
