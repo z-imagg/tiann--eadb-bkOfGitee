@@ -53,5 +53,5 @@ F_EASL=${D_EA}/sources.list
 F_EASL_Ts=${F_EASL}.tsinghua
 $C_adb shell "su -c 'mv ${F_EASL}  ${F_EASL}.origin; mv ${F_SL_Ts_origin} ${F_EASL_Ts}; ln -s ${F_EASL_Ts} ${F_EASL}; '"
 #chroot
-chroot_cmd="[1.进'adb shell',2.在'adb shell'内 chroot, 3. 在chroot后 执行/root/basic_setup.sh] : $C_adb shell ; su -c '${D_DebRoot}/run ${D_DebRoot}/debian'"
+chroot_cmd="[1.进'adb shell',2.在'adb shell'内 chroot, 3. 在chroot后 执行/root/basic_setup.sh] : #1# $C_adb shell ; #2# su -c '${D_DebRoot}/run ${D_DebRoot}/debian' ; #3# /root/basic_setup.sh"
 echo $chroot_cmd
