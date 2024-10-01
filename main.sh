@@ -48,7 +48,7 @@ $C_adb shell "su -c 'mv ${D_DebRoot}/basic_setup.sh ${D_DebRoot}/debian/root/'"
 #用清华源作为apt源
 D_etcApt=${D_DebRoot}/debian/etc/apt/
 F_aptSrcsLs=${D_etcApt}/sources.list
-$C_adb shell "su -c 'mv ${F_aptSrcsLs}  ${F_aptSrcsLs}.origin; mv ${D_DebRoot}/sources.list.tsinghua ${D_etcApt}.tsinghua; ln -s ${D_etcApt}.tsinghua ${D_etcApt}; '"
+$C_adb shell "su -c 'mv ${F_aptSrcsLs}  ${F_aptSrcsLs}.origin; mv ${D_DebRoot}/sources.list.tsinghua ${F_aptSrcsLs}.tsinghua; ln -s ${F_aptSrcsLs}.tsinghua ${D_etcApt}; '"
 #chroot
 chroot_cmd="[1.进'adb shell',2.在'adb shell'内 chroot, 3. 在chroot后 执行/root/basic_setup.sh] : $C_adb shell ; su -c '${D_DebRoot}/run ${D_DebRoot}/debian'"
 echo $chroot_cmd
