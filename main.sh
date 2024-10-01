@@ -14,10 +14,9 @@ Url_debFs=https://github.com/tiann/eadb/releases/download/v0.1.6/debianfs-arm64-
 errMsg12="file not existed: ${F_debFs_targz}, exit code 12"
 [[ -f $F_debFs_targz ]] || { echo $errMsg12; exit 12; }
 
-errMsg13="work home dir 未指定 , exit code 13"
-[[ -v D_work ]] || { echo $errMsg13; exit 13; }
+[[ -v D_work ]] || { D_work="/tmp/eadb_work_home" ; echo "D_work=${D_work}" ; }
 
-errMsg14="phone 未指定, exit code 14"
+errMsg14="phone 未指定(adb device输出的名字称为phone), exit code 14"
 [[ -v phone ]] || { echo $errMsg14; exit 14; }
 
 rm -fr $D_work && mkdir -p $D_work
